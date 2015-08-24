@@ -1,12 +1,12 @@
 require 'rspec'
-require 'webrick'
+require 'httpadapter'
 
 require_relative '../lib/translationApiClient'
 
 describe "TranslationApiClient" do
   before :all do
     TranslationApiClient::Swagger.configure do |configuration|
-      configuration.key = "<API KEY HERE>"
+      configuration.key = "8b287b9f-ced3-4d2b-b7fa-dad02fbea7f6"
     end
 
   end
@@ -34,8 +34,8 @@ describe "TranslationApiClient" do
       expect(result.outputs).not_to be_empty
     end
     it "Synchronously translates a file from source language to target language" do
-      result = TranslationApiClient::TranslationApi.translation_translate_file_get(File.open("./spec/sample.txt","r"), "fr")
-      expect(result.outputs).not_to be_empty
+      result = TranslationApiClient::TranslationApi.translation_translate_file_get(File.open("./spec/sample.txt","r"), "fr", {:with_source => true, :with_annotations => true})
+      expect(result).not_to be_empty
     end
     it "Asynchronously translates a file from source language to target language" do
       result = TranslationApiClient::TranslationApi.translation_translate_file_get(File.open("./spec/sample.txt","r"), "fr",  {:async =>  true})

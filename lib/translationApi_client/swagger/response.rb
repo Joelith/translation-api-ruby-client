@@ -1,7 +1,12 @@
+require 'httpadapter/adapters/typhoeus'
+require 'rack/request'
+require 'rack/multipart'
+
 module TranslationApiClient
   module Swagger
     class Response
       require 'json'
+
 
       attr_accessor :raw
 
@@ -28,9 +33,47 @@ module TranslationApiClient
       # If body is JSON, parse it
       # Otherwise return raw string
       def body
-        JSON.parse(raw.body, :symbolize_names => true)
-      rescue
-        raw.body
+        if headers["Content-Type"] && (headers["Content-Type"].include?  "multipart/")
+          adapter = HTTPAdapter::TyphoeusAdapter.new
+
+          result = adapter.adapt_response(raw)
+          req = Rack::Request.new(result)
+          parts = req.env[2][0].force_encoding("UTF-8").split("--"+headers["Content-Type"][27...67])
+          parts.delete_if {|x| !x.include? "part-name: "}
+          parts.map! { |value|
+            arr = value.split(' ')
+            arr[0] = ''
+            arr[1] = '"'+arr[1]+'":'
+            if arr[2][0] != '{'
+              for i in 2..arr.length-1
+                arr[i] = arr[i].gsub('"', '\"')
+              end
+              arr[2] = '{ "ouput":"'+arr[2]
+            end
+            if arr[-1][-1] != '}'
+              arr[-1] = arr[-1]+'"}'
+            end
+            arr[-1] = arr[-1]+','
+            arr = arr.join(" ")
+            value = arr
+          }
+          parts = parts.join(" ").sub! /\,$/, ''
+
+          parts = "{"+parts+'}'
+          #JSON.parse(parts)
+          #JSON.parse req.env[2].gsub('=>', ':')
+          puts parts#JSON.parse(parts)
+        #  Rack::Multipart.parse_multipart(req.env)
+      result
+
+        else
+          begin
+          JSON.parse(raw.body, :symbolize_names => true)
+          rescue
+            raw.body
+          end
+        end
+
       end
 
       # `headers_hash` is a Typhoeus-specific extension of Hash,

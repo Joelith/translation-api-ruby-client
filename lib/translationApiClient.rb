@@ -17,6 +17,7 @@ require 'TranslationApi_client/models/language_pair'
 require 'TranslationApi_client/models/supported_language_response'
 require 'TranslationApi_client/models/profile'
 require 'TranslationApi_client/models/profiles_response'
+require 'httpadapter'
 
 # APIs
 require 'TranslationApi_client/api/translation_api'
