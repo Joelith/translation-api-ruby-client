@@ -6,16 +6,26 @@ require_relative '../lib/translationApiClient'
 describe "TranslationApiClient" do
   before :all do
     TranslationApiClient::Swagger.configure do |configuration|
-      configuration.key = "8b287b9f-ced3-4d2b-b7fa-dad02fbea7f6"
+      configuration.host = "﻿https://platform.systran.net:8904"
+      if File.exists?("./key.txt")
+        key = File.read("./key.txt", :encoding => 'UTF-8')
+        if key.length > 0
+          configuration.key = key
+        else
+          puts "The key.txt file is empty"
+        end
+      else
+        puts"The key.txt file doesn't exists"
+      end
+
     end
 
   end
   describe "Configuration" do
     it "assures the user has a correct client configuration" do
-      expect(TranslationApiClient::Swagger.configuration.key.length).to eq(36)
+      expect(TranslationApiClient::Swagger.configuration.key.length).to be_between(10, 100)
     end
   end
-
   describe "TranslationApi" do
     it "Lists language pairs in which translation is supported." do
       result = TranslationApiClient::TranslationApi.translation_supported_languages_get
