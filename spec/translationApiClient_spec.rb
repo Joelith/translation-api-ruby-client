@@ -12,10 +12,10 @@ describe "TranslationApiClient" do
         if key.length > 0
           configuration.key = key
         else
-          puts "The key.txt file is empty"
+          raise "The apiKey.txt file is empty"
         end
       else
-        puts"The key.txt file doesn't exists"
+        raise "The apiKey.txt file doesn't exist"
       end
 
     end
