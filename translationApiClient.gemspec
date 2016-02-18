@@ -4,7 +4,7 @@ require "TranslationApi_client/swagger/version"
 
 Gem::Specification.new do |s|
   s.name        = "translationApiClient"
-  s.version     = TranslationApiClient::Swagger::VERSION
+  s.version     = '1.0.1'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Systran"]
   s.email       = "support-professional@systransoft.com"
