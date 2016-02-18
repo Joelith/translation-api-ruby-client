@@ -4,7 +4,7 @@ require 'json'
 
 module                                                                                                                                                                 TranslationApiClient
   class TranslationApi
-    basePath = "https://platformapi-stag.systran.net:8904/"
+    basePath = "https://platform.systran.net:8904/"
     # apiInvoker = APIInvoker
 
     # List of profiles
@@ -120,7 +120,7 @@ module                                                                          
       
 
       # resource path
-      path = "/translation/translate".sub('{format}','json')
+      path = "/translation/text/translate".sub('{format}','json')
 
       # query parameters
       query_params = {}
@@ -135,7 +135,7 @@ module                                                                          
       query_params[:'backTranslation'] = opts[:'back_translation'] if opts[:'back_translation']
       query_params[:'options'] = opts[:'options'] if opts[:'options']
       query_params[:'encoding'] = opts[:'encoding'] if opts[:'encoding']
-      query_params[:'async'] = opts[:'async'] if opts[:'async']
+      #query_params[:'async'] = opts[:'async'] if opts[:'async']
       query_params[:'callback'] = opts[:'callback'] if opts[:'callback']
 
       # header parameters
@@ -157,7 +157,7 @@ module                                                                          
       
 
       auth_names = ['accessToken', 'apiKey']
-      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => auth_names}).make.body
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => auth_names}).make.body
       obj = TranslationResponse.new() and obj.build_from_hash(response)
     end
 
@@ -174,7 +174,7 @@ module                                                                          
       
 
       # resource path
-      path = "/translation/translate/cancel".sub('{format}','json')
+      path = "/translation/file/cancel".sub('{format}','json')
 
       # query parameters
       query_params = {}
@@ -200,7 +200,7 @@ module                                                                          
       
 
       auth_names = ['accessToken', 'apiKey']
-      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => auth_names}).make.body
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => auth_names}).make.body
       obj = TranslationCancel.new() and obj.build_from_hash(response)
     end
 
@@ -230,7 +230,7 @@ module                                                                          
       
 
       # resource path
-      path = "/translation/translate/file".sub('{format}','json')
+      path = "/translation/file/translate".sub('{format}','json')
 
       # query parameters
       query_params = {}
@@ -266,7 +266,7 @@ module                                                                          
       
 
       auth_names = ['accessToken', 'apiKey']
-      response = Swagger::Request.new(:GET, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => auth_names}).make.body
+      response = Swagger::Request.new(:POST, path, {:params => query_params, :headers => header_params, :form_params => form_params, :body => post_body, :auth_names => auth_names}).make.body
       if query_params[:'async']
       OpenStruct.new(response)
       else
@@ -287,7 +287,7 @@ module                                                                          
       
 
       # resource path
-      path = "/translation/translate/result".sub('{format}','json')
+      path = "/translation/file/result".sub('{format}','json')
 
       # query parameters
       query_params = {}
@@ -330,7 +330,7 @@ module                                                                          
       
 
       # resource path
-      path = "/translation/translate/status".sub('{format}','json')
+      path = "/translation/file/status".sub('{format}','json')
 
       # query parameters
       query_params = {}
