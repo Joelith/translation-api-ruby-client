@@ -4,7 +4,7 @@ require 'json'
 
 module                                                                                                                                                                 TranslationApiClient
   class TranslationApi
-    basePath = "https://platform.systran.net:8904/"
+    basePath = "https://api-platform.systran.net/"
     # apiInvoker = APIInvoker
 
     # List of profiles

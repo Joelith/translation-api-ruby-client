@@ -7,7 +7,7 @@ module TranslationApiClient
       def initialize
         @format = 'json'
         @scheme = 'https'
-        @host = 'platform.systran.net:8904'
+        @host = 'api-platform.systran.net'
         @base_path = '/'
         @user_agent = "ruby-swagger-#{Swagger::VERSION}"
         @inject_format = false
