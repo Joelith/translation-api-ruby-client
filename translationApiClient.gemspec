@@ -12,9 +12,12 @@ Gem::Specification.new do |s|
   s.summary     = %q{A ruby wrapper for the Systran Translation platform APIs}
   s.description = %q{This gem maps to the translation swagger API}
   s.license     = "Apache-2.0"
+
   s.add_runtime_dependency 'typhoeus', '~> 0.2', '>= 0.2.1'
   s.add_runtime_dependency 'addressable', '~> 2.2', '>= 2.2.4'
   s.add_runtime_dependency 'json', '~> 1.4', '>= 1.4.6'
+  s.add_runtime_dependency 'httpadapter', '~> 1.0.1'
+
 
   s.add_development_dependency 'rspec', '~> 3.2', '>= 3.2.0'
   s.add_development_dependency 'vcr', '~> 2.9', '>= 2.9.3'
