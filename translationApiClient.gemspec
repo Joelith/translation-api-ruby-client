@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "TranslationApi_client/swagger/version"
+require "translationApi_client/swagger/version"
 
 Gem::Specification.new do |s|
   s.name        = "translationApiClient"
-  s.version     = '1.0.2'
+  s.version     = '1.0.3'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Systran"]
   s.email       = "support-professional@systransoft.com"
