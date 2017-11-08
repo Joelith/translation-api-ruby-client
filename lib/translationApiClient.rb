@@ -1,26 +1,26 @@
 # Swagger common files
-require 'TranslationApi_client/monkey'
-require 'TranslationApi_client/swagger'
-require 'TranslationApi_client/swagger/configuration'
-require 'TranslationApi_client/swagger/request'
-require 'TranslationApi_client/swagger/response'
-require 'TranslationApi_client/swagger/version'
+require 'translationApi_client/monkey'
+require 'translationApi_client/swagger'
+require 'translationApi_client/swagger/configuration'
+require 'translationApi_client/swagger/request'
+require 'translationApi_client/swagger/response'
+require 'translationApi_client/swagger/version'
 
 # Models
-require 'TranslationApi_client/models/base_object'
-require 'TranslationApi_client/models/translation_output'
-require 'TranslationApi_client/models/translation_response'
-require 'TranslationApi_client/models/translation_status'
-require 'TranslationApi_client/models/translation_cancel'
-require 'TranslationApi_client/models/profile_id'
-require 'TranslationApi_client/models/language_pair'
-require 'TranslationApi_client/models/supported_language_response'
-require 'TranslationApi_client/models/profile'
-require 'TranslationApi_client/models/profiles_response'
+require 'translationApi_client/models/base_object'
+require 'translationApi_client/models/translation_output'
+require 'translationApi_client/models/translation_response'
+require 'translationApi_client/models/translation_status'
+require 'translationApi_client/models/translation_cancel'
+require 'translationApi_client/models/profile_id'
+require 'translationApi_client/models/language_pair'
+require 'translationApi_client/models/supported_language_response'
+require 'translationApi_client/models/profile'
+require 'translationApi_client/models/profiles_response'
 require 'httpadapter'
 
 # APIs
-require 'TranslationApi_client/api/translation_api'
+require 'translationApi_client/api/translation_api'
 
 module TranslationApiClient
   # Initialize the default configuration
